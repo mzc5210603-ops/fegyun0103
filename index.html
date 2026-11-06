@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>码刻 MARKQR</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="bar">
+    <div class="mark">M</div>
+    <div class="titles">
+      <h1>码刻</h1>
+      <span>MARKQR&nbsp;·&nbsp;QR&nbsp;STUDIO</span>
+    </div>
+    <nav class="chip-row" id="presets"></nav>
+  </header>
+
+  <main class="grid">
+
+    <section class="stage">
+      <div class="stage-head">
+        <span class="tag">PREVIEW</span>
+        <span class="meta" id="meta">—</span>
+      </div>
+
+      <div class="canvas-wrap">
+        <i class="br br-tl"></i><i class="br br-tr"></i>
+        <i class="br br-bl"></i><i class="br br-br"></i>
+        <div class="plain">
+          <div class="qr-host" id="qrHost"></div>
+        </div>
+      </div>
+
+      <div class="stage-foot">
+        <button class="btn btn-primary" id="dlPng">下载 PNG</button>
+        <button class="btn" id="dlSvg">下载 SVG</button>
+        <button class="btn" id="cpImg">复制图片</button>
+        <span class="file-id" id="fileId">#0001</span>
+      </div>
+    </section>
+
+    <aside class="panel">
+
+      <div class="block">
+        <label class="lbl" for="content">内容</label>
+        <textarea id="content" spellcheck="false" placeholder="键入内容，立即生成…"></textarea>
+        <div class="sub" id="hint">字符数 0</div>
+      </div>
+
+      <div class="block">
+        <label class="lbl">颜色</label>
+        <div class="swatch-row">
+          <label class="swatch">
+            <input type="color" id="fg" value="#0a0c10">
+            <span>前景</span>
+          </label>
+          <label class="swatch">
+            <input type="color" id="bg" value="#ffffff">
+            <span>背景</span>
+          </label>
+          <div class="quick" id="quickColors"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <label class="lbl">纠错等级</label>
+        <div class="seg" id="eccSeg">
+          <button data-v="L">L</button>
+          <button data-v="M" class="on">M</button>
+          <button data-v="Q">Q</button>
+          <button data-v="H">H</button>
+        </div>
+        <input type="hidden" id="ecc" value="M">
+      </div>
+
+      <div class="block two">
+        <div>
+          <label class="lbl">留白 <b id="marginVal">2</b></label>
+          <input type="range" id="margin" min="0" max="8" value="2">
+        </div>
+        <div>
+          <label class="lbl">尺寸 <b id="sizeVal">220</b>px</label>
+          <input type="range" id="size" min="120" max="520" value="220" step="10">
+        </div>
+      </div>
+
+      <div class="block">
+        <label class="lbl">逆解码</label>
+        <div class="dropzone" id="drop">
+          <span>拖入或点击上传二维码图片</span>
+          <input type="file" id="file" accept="image/*" hidden>
+        </div>
+        <div class="decode-out" id="decodeOut">—</div>
+      </div>
+
+    </aside>
+  </main>
+</div>
+
+<i class="scanline" aria-hidden="true"></i>
+
+<script src="qrcode.min.js"></script>
+<script src="jsQR.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
